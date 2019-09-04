@@ -1,7 +1,14 @@
 package hagman.test;
 
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+import hangman.model.GameScore;
+import hangman.model.OriginalScore;
+
 public class GameScoreTest {
-	/**
+	/*
 	 * Original Score:
 	 * 
 	 * Clase 1 de Equivalencia: Esta clase comprueba que no gana ningun punto,
@@ -99,4 +106,94 @@ public class GameScoreTest {
 	 * 
 	 */
 	
+	@Test
+	public void deberiNoPerdePuntos() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(0, 0)==100);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void deberiNoPerdePuntos1() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(1, 0)==100);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void deberiNoBonifica() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(34, 0)==100);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void deberiPenalizar() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(0, 1)==100);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void deberiSerMinimo() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(0, 10)==90);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void deberiaSerminimo2() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(0, 9)==10);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void DatoIncorrecto() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			score.calculateScore(0, -1);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void DatoIncorrecto1() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			score.calculateScore(-1, 0);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void deberiaSerminimo1() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(0, 11)==0);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void deberiaSerminimo3() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(0, 34)==0);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
 }
