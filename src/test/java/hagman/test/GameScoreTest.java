@@ -196,4 +196,165 @@ public class GameScoreTest {
 			assertTrue(false);
 		}
 	}
+	/*
+	 * BonusScore
+	 */
+	@Test
+	public void NoGanaPunto() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(0, 0)==0);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void NoGanaPunto1() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(1, 2)==0);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void bonifica() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(1, 0)==10);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void penaliza() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(1, 1)==5);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void noGanaNingunPunto() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(-1, 0)==0);
+		}catch (Exception e) {
+			assertTrue(true);
+		}
+	}
+	@Test
+	public void noGanaNingunPunto1() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(1, -1)==0);
+		}catch (Exception e) {
+			assertTrue(true);
+		}
+	}
+	@Test
+	public void puntajeMinimo() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(0, 1)==0);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void puntajeMinimo1() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(0, 34)==0);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	/*
+	 * powerScore
+	 */
+	@Test
+	public void noGanaNingunPunto2() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(0, 0)==0);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void bonifica1() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(1, 0)==5);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void bonifica2() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(3, 0)==125);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	
+	@Test
+	public void bonifica3() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(4, 0)==500);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void noGanaNingunPunto3() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(1, -1)==0);
+		}catch (Exception e) {
+			assertTrue(true);
+		}
+	}
+	@Test
+	public void noGanaNingunPunto4() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(-1, 1)==0);
+		}catch (Exception e) {
+			assertTrue(true);
+		}
+	}
+	@Test
+	public void bonifica4() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(4, 16)==372);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void bonifica5() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(4, 10)==420);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	@Test
+	public void bonifica6() {
+		try {
+			OriginalScore score = new OriginalScore(); 
+			assertTrue(score.calculateScore(4, 0)==500);
+		}catch (Exception e) {
+			assertTrue(false);
+		}
+	}
+	
 }
