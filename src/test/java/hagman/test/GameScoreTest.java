@@ -20,22 +20,44 @@ public class GameScoreTest {
 	 * Original Score:
 	 * 	Limites de frontera:
 	 * 		1. correctCount = 0, incorrectCount = 0
-	 * 		2. correctCount = 1, incorrectCount = 0
-	 * 		3. correctCount = -1, incorrectCount = 0
-	 * 		4. correctCount = 0, incorrectCount = -1
+	 * 		1. correctCount = 1, incorrectCount = 0
+	 * 		1. correctCount = 34, incorrectCount = 0
+	 * 		1. correctCount = 0, incorrectCount = 1
+	 * 		1. correctCount = 0, incorrectCount = 10
+	 * 		1. correctCount = 0, incorrectCount = 9
+	 * 
+	 * 		2. correctCount = -1, incorrectCount = 0
+	 * 		2. correctCount = 0, incorrectCount = -1
+	 * 
+	 * 		3. correctCount = 0, incorrectCount = 11
+	 * 		3. correctCount = 0, incorrectCount = 34
 	 * 
 	 * Bonus Score:
 	 * 	Limites de frontera:
 	 * 		1. correctCount = 0, incorrectCount = 0
-	 * 		2. correctCount = 1, incorrectCount = 0
-	 * 		3. correctCount = 34, incorrectCount = 0
-	 * 		4. correctCount = -1, incorrectCount = 0
+	 * 		1. correctCount = 1, incorrectCount = 2
+	 * 		1. correctCount = 3, incorrectCount = 0
+	 * 		1. correctCount = 3, incorrectCount = 1
+	 * 
+	 * 		2. correctCount = -1, incorrectCount = 0
+	 * 		2. correctCount = 0, incorrectCount = -1
+	 * 
+	 * 		3. correctCount = 0, incorrectCount = 1
+	 * 		3. correctCount = 0, incorrectCount = 34
 	 * 
 	 * Powe Score:
 	 * 	Limites de frontera:
-	 * 		1. correctCount > 0, incorrectCount = 10
-	 * 		2. correctCount > 0, incorrectCount = 11
-	 * 		3. correctCount > 0, incorrectCount = 9
+	 * 		1. correctCount = 0, incorrectCount = 0
+	 * 		1. correctCount = 1, incorrectCount = 0
+	 * 		1. correctCount = 3, incorrectCount = 0
+	 * 		1. correctCount = 3, incorrectCount = 10
+	 * 
+	 * 		2. correctCount = -1, incorrectCount = 0
+	 * 		2. correctCount = 0, incorrectCount = -1
+	 * 
+	 * 		3. correctCount = 4, incorrectCount = 16
+	 * 		3. correctCount = 0, incorrectCount = 1
+	 * 	 	3. correctCount = 4, incorrectCount = 0
 
 	
 	/*
@@ -183,7 +205,7 @@ public class GameScoreTest {
 	public void noGanaNingunPunto1() {
 		try {
 			BonusScore score = new BonusScore();  
-			assertTrue(score.calculateScore(1, -1)==0);
+			assertTrue(score.calculateScore(0, -1)==0);
 		}catch (Exception e) {
 			assertTrue(true);
 		}
@@ -252,7 +274,7 @@ public class GameScoreTest {
 	public void noGanaNingunPunto3() {
 		try {
 			PowerScore score = new PowerScore(); 
-			assertTrue(score.calculateScore(1, -1)==0);
+			assertTrue(score.calculateScore(0, -1)==0);
 		}catch (Exception e) {
 			assertTrue(true);
 		}
@@ -261,7 +283,7 @@ public class GameScoreTest {
 	public void noGanaNingunPunto4() {
 		try {
 			PowerScore score = new PowerScore(); 
-			assertTrue(score.calculateScore(-1, 1)==0);
+			assertTrue(score.calculateScore(-1, 0)==0);
 		}catch (Exception e) {
 			assertTrue(true);
 		}
