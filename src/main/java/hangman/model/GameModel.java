@@ -12,6 +12,7 @@
 ****************************************************************/ 
 package hangman.model;
 
+import hangman.Exception.GameScoreException;
 import hangman.model.dictionary.HangmanDictionary;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -22,6 +23,7 @@ public class GameModel {
     private int incorrectCount;
     private int correctCount;
     private LocalDateTime dateTime;
+    private GameScore typeScore;
     private int gameScore;
     private int[] lettersUsed;
     
@@ -34,25 +36,25 @@ public class GameModel {
     
     
    
-    public GameModel(HangmanDictionary dictionary){
+    public GameModel(HangmanDictionary dictionary, GameScore puntaje) throws GameScoreException{
         //this.dictionary = new EnglishDictionaryDataSource();
         this.dictionary=dictionary;
+        typeScore = puntaje;
         randomWord = selectRandomWord();
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
         correctCount = 0;
-        gameScore = 100;
-        
+        gameScore = typeScore.calculateScore(correctCount, incorrectCount);
     }
     
     //method: reset
     //purpose: reset this game model for a new game
-    public void reset(){
+    public void reset() throws GameScoreException{
         randomWord = selectRandomWord();
         randomWordCharArray = randomWord.toCharArray();
         incorrectCount = 0;
         correctCount = 0;
-        gameScore = 100;
+        gameScore = typeScore.calculateScore(correctCount, incorrectCount);
     }
 
     //setDateTime
@@ -64,7 +66,7 @@ public class GameModel {
     //method: makeGuess
     //purpose: check if user guess is in string. Return a
     // list of positions if character is found in string
-    public ArrayList<Integer> makeGuess(String guess){
+    public ArrayList<Integer> makeGuess(String guess) throws GameScoreException{
         char guessChar = guess.charAt(0);
         ArrayList<Integer> positions = new ArrayList<>();
         for(int i = 0; i < randomWordCharArray.length; i++){
@@ -74,7 +76,7 @@ public class GameModel {
         }
         if(positions.size() == 0){
             incorrectCount++;
-            gameScore -= 10;
+            gameScore = typeScore.calculateScore(correctCount, incorrectCount);
         } else {
             correctCount += positions.size();
         }

@@ -44,10 +44,10 @@ public class SwingProject {
 
     public static final String PROJECT_NAME = "CS 245 - Swing Project v1";
 
-    public static GUI createGUIUsingFactoryMethod() {
+   /* public static GUI createGUIUsingFactoryMethod() {
         return new GUI(new HangmanDefaultFactoryMethod());
     }
-
+*/
     public static GUI createGUIUsingGuice() {
         Injector injector = Guice.createInjector(new HangmanFactoryServices());
         return injector.getInstance(GUI.class);
@@ -56,7 +56,7 @@ public class SwingProject {
     //method: main
     //purpose: the entry-point to our application
     public static void main(String[] args) {
-        createGUIUsingFactoryMethod().play();
+    	createGUIUsingGuice().play();
     }
 
 }
