@@ -11,8 +11,10 @@ public class BonusScore implements GameScore {
 			throw new GameScoreException(GameScoreException.CORRECTCOUNT_NEGATIVO);
 		}else if(incorrectCount<0) {
 			throw new GameScoreException(GameScoreException.INCORRECTCOUNT_NEGATIVO);
-		}else if (correctCount*10>incorrectCount*5) {
-			resultado=correctCount*10-incorrectCount*5;
+		}
+		resultado=correctCount*10-incorrectCount*5;
+		if (resultado < 0) {
+			resultado = 0;
 		}
 		return resultado;
 	}
